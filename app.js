@@ -1,14 +1,23 @@
-const http = require('http');
+const express = require('express');
+const port = 3000;
 
-const hostname = '127.0.0.1';
-const port = 3030;
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World, we are live with Node!\n');
-});
+app.get('/', (req,res) => {
+  console.log('at the home route');
+  res.send('hello world!');
+})
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.get('/contact', (req,res) => {
+  console.log('at the contact route');
+  res.send('ont the contact page!');
+})
+
+app.get('/portfolio', (req,res) => {
+  console.log('at the portfolio route');
+  res.send('ont the portfolio page!');
+})
+
+app.listen(port, () => {
+  console.log(`Server running at ${port}`);
 });
